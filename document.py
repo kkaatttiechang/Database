@@ -18,6 +18,9 @@ class profile:
     image_url = ""
     datetime = 0
     keyword =  ""
+    tag = ""
+    change = ""
+    
 
     def create (self):
         prev_id = db.crawl.count()
@@ -43,12 +46,11 @@ class profile:
         else:
             return -1
 
-    def update(self, tag):
+    def update(self, tag, change):
         numupdates = find_bykeyword(tag)
         if numupdates > 0:
-            db.collection.update({"keyword":tag})
-
-#what are you going to update?
+            db.collection.update({"keyword":tag},{"keyword":change} )
+#update keywords
 
     def delete(self, tag):
         numdeletes = find_bykeyword(tag)
