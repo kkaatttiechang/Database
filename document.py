@@ -46,16 +46,14 @@ class profile:
     def update(self, tag):
         numupdates = find_bykeyword(tag)
         if numupdates > 0:
-            for updated in numupdates: 
+            db.collection.update({"keyword":tag})
 
 #what are you going to update?
 
     def delete(self, tag):
         numdeletes = find_bykeyword(tag)
         if numdeletes > 0:
-            db.collection.deleteMany({"keyword":tag})
-        else:
-            db.crawl.remove()
+            db.collection.remove({"keyword":tag})
 
 
 
