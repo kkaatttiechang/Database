@@ -27,11 +27,11 @@ class servdictionary:
             data = self.quickacc.find_one({'keyword':keyword}, {"keyword": 0, "_id": 0 } )
             return data
         else:
-            return ([-1], [-1])
+            return
 
 #sample fetch---------------------------------------------------        
-letter = ["hi", "ohiyo", "nihao"]
-number = [1, 3, 5]
-x = servdictionary()
-x.put("try", number, letter)
-print(x.get("try").get('list'))
+# letter = ["hi", "ohiyo", "nihao"]
+# number = [1, 3, 5]
+# x = servdictionary()
+# x.put("try", number, letter)
+# print(x.get("try").get('list'))
