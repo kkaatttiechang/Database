@@ -44,6 +44,7 @@ class profile:
             db.collection.update({"keyword":tag},{"keyword":change} )
 #update keywords
 
+    @staticmethod
     def delete(self, tag):
         numdeletes = find_bykeyword(tag)
         if numdeletes > 0:
