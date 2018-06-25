@@ -5,6 +5,7 @@ import cv2
 
 
 
+
 class profile:
     def __init__(self,server=''):
         if server =='':
@@ -54,6 +55,11 @@ class profile:
         numdeletes = self.find_bykeyword(tag)
         if numdeletes > 0:
             self.db.collection.remove({"keyword":tag})
+
+
+test = profile()
+test.imagepath = print("\home\katiechang\Documents\\")
+
 
 
 
