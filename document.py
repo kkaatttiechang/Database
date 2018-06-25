@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from pymongo import MongoClient
 from bson import ObjectId
 import cv2
@@ -57,8 +55,6 @@ class profile:
         if numdeletes > 0:
             self.db.collection.remove({"keyword":tag})
 
-test = profile()
-test.imagepath = print("\home\katiechang\Documents\\")
 
 
         

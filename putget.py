@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 from pymongo import MongoClient
 from bson import ObjectId
 
