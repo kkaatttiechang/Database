@@ -57,6 +57,8 @@ class profile:
         if numdeletes > 0:
             db.collection.remove({"keyword":tag})
 
+test = profile()
+test.imagepath = "\home\katiechang\Documents\"
 
 
         
