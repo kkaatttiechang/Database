@@ -10,6 +10,7 @@ crawl = db.crawl
 
 global profilelist[]
 
+
 class profile:
 
     @staticmethod
