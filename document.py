@@ -6,9 +6,10 @@ import cv2
 
 
 
-global tublelist
+global profilelist[]
 
 class profile:
+
     client = MongoClient('mongodb://10.34.33.28:33333')
     db = client.database
     crawl = db.crawl
@@ -22,36 +23,44 @@ class profile:
     change = ""
     
 
-    def create (self):
-        prev_id = self.db.crawl.count()
+
+
+    @staticmethod
+    def create (imagepath, source, web_url, image_url, datetime, keyword):
+        prev_id = db.crawl.count()
+
         documentformatter={
-            "source":self.source,
-            "web url": self.web_url,
-            "image url":self.image_url,
-            "keyword":self.keyword,
-            "height":self.imagepath.shape[0],
-            "width":self.imagepath.shape[1],
-            "datetime": self.datetime,
+            "source":source,
+            "web url": web_url,
+            "image url":image_url,
+            "keyword":keyword,
+            "height":imagepath.shape[0],
+            "width":imagepath.shape[1],
+            "datetime": datetime,
             "_id" : ObjectId(repr(prev_id+1))
         }
-        self.db.crawl.insert([documentformatter])
+        db.crawl.insert([documentformatter])
 
-    def find_bykeyword (self, tags):
-        count = self.db.crawl.find({"keyword":{"$all":tags}}).count()
+
+    @staticmethod
+    def find_bykeyword (tags):
+        count = db.crawl.find({"keyword":{"$all":tags}}).count()
         if count  > 0:
             for users in count:
-                self.profilelist[self.user] = self.db.crawl.find_one({"keyword":{"$all":tags}}).skip(self.user)
-            tuplelist = tuple(self.profilelist)
-            return self.db.crawl.find({"keyword":{"$all":tags}}).count()
+                profilelist[user] = db.crawl.find_one({"keyword":{"$all":tags}}).skip(user)
+            return db.crawl.find({"keyword":{"$all":tags}}).count()
         else:
             return -1
 
-    def update(self, tag, change):
-        numupdates = self.find_bykeyword(tag)
+    @staticmethod
+    def update(tag, change):
+        numupdates = find_bykeyword(tag)
+
         if numupdates > 0:
-            self.db.collection.update({"keyword":tag},{"keyword":change} )
+            db.collection.update({"keyword":tag},{"keyword":change} )
 #update keywords
 
+    @staticmethod
     def delete(self, tag):
         numdeletes = self.find_bykeyword(tag)
         if numdeletes > 0:
