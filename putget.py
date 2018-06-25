@@ -3,9 +3,7 @@
 from pymongo import MongoClient
 from bson import ObjectId
 
-client = MongoClient('mongodb://katiechang:data@127.0.0.1')
-#mongodb://10.34.33.28:33333
-#mongodb://katiechang:data@127.0.0.1
+client = MongoClient('mongodb://10.34.33.28:33333')
 db = client.database
 quickacc = db.quickacc
 
