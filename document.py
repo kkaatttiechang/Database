@@ -18,7 +18,7 @@ class profile:
 
 
 
-    def create (self,imagepath, source, web_url, image_url, datetime, keyword):
+    def create (self,imagepath, source, web_url, image_url, datetime, keyword, height, width):
         prev_id = self.db.crawl.count()
 
         documentformatter={
@@ -26,8 +26,8 @@ class profile:
             "web url": web_url,
             "image url":image_url,
             "keyword":keyword,
-            "height":imagepath.shape[0],
-            "width":imagepath.shape[1],
+            "height":height,
+            "width":width,
             "datetime": datetime,
             "_id" : ObjectId(repr(prev_id+1))
         }
